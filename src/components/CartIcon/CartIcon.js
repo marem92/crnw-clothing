@@ -15,10 +15,4 @@ const CartIcon = ({ toggleCartHidden }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    toggleCartHidden: state.hidden,
-  };
-};
-
-export default connect(mapStateToProps, { toggleCartHidden })(CartIcon);
+export default connect(null, { toggleCartHidden })(CartIcon);
