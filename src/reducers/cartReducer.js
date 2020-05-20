@@ -1,5 +1,10 @@
-import { TOGGLE_CART_HIDDEN, ADD_ITEM } from '../actions/types';
-import { addItemToCart } from '../utils/cartUtils';
+import {
+  TOGGLE_CART_HIDDEN,
+  ADD_ITEM,
+  DECREASE_ITEM_QUANTITY,
+  REMOVE_ITEM,
+} from '../actions/types';
+import { addItemToCart, removeItemFromCart } from '../utils/cartUtils';
 
 const INITIAL_STATE = {
   hidden: true,
@@ -17,6 +22,18 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: addItemToCart(state.cartItems, action.payload),
+      };
+    case DECREASE_ITEM_QUANTITY:
+      return {
+        ...state,
+        cartItems: removeItemFromCart(state.cartItems, action.payload),
+      };
+    case REMOVE_ITEM:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          cartItem => cartItem.id !== action.payload.id
+        ),
       };
     default:
       return state;
