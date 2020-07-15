@@ -4,6 +4,7 @@ import {
   ADD_ITEM,
   REMOVE_ITEM,
   DECREASE_ITEM_QUANTITY,
+  UPDATE_COLLECTIONS,
 } from './types';
 
 export const setCurrentUser = user => {
@@ -30,4 +31,9 @@ export const removeItem = item => ({
 export const decreaseItemQuantity = item => ({
   type: DECREASE_ITEM_QUANTITY,
   payload: item,
+});
+
+export const updateCollections = collectionsMap => ({
+  type: UPDATE_COLLECTIONS,
+  payload: collectionsMap,
 });
